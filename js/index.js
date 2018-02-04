@@ -33,11 +33,43 @@ document.addEventListener("DOMContentLoaded", () => {
   const graph = () => {
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    context.strokeStyle = "#000";
-    context.fillStyle = "#000";
+    context.font = "bold 9px serif";
+    context.beginPath();
+
+    /* draw grid */
+    context.strokeStyle = "#1113";
+
+    for (let mathY = OUTPUT_DOMAIN_START; mathY <= OUTPUT_DOMAIN_END; ++mathY) {
+      const screenY = mapRange(-mathY,
+                               OUTPUT_DOMAIN_START, OUTPUT_DOMAIN_END,
+                               0, canvas.height - 1);
+      const nextScreenY = mapRange(-(mathY + 1),
+                                   OUTPUT_DOMAIN_START, OUTPUT_DOMAIN_END,
+                                   0, canvas.height - 1);
+
+      for (let mathX = INPUT_DOMAIN_START; mathX <= INPUT_DOMAIN_END; ++mathX) {
+        const screenX = mapRange(mathX,
+                                 INPUT_DOMAIN_START, INPUT_DOMAIN_END,
+                                 0, canvas.width - 1);
+        const nextScreenX = mapRange(mathX + 1,
+                                     INPUT_DOMAIN_START, INPUT_DOMAIN_END,
+                                     0, canvas.width - 1);
+
+        /* left to right */
+        context.moveTo(screenX, screenY);
+        context.lineTo(nextScreenX, screenY);
+
+        /* up to down */
+        context.moveTo(screenX, screenY);
+        context.lineTo(screenX, nextScreenY);
+      }
+    }
+
+    context.stroke();
 
     context.beginPath();
-    context.font = "bold 9px serif";
+    context.strokeStyle = "#000";
+    context.fillStyle = "#000";
 
     /* draw x numbers */
     for (let mathX = INPUT_DOMAIN_START; mathX <= INPUT_DOMAIN_END; ++mathX) {
