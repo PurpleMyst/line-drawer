@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* draw x numbers */
     for (let mathX = INPUT_DOMAIN_START; mathX <= INPUT_DOMAIN_END; ++mathX) {
+      if (mathX === 0) continue;
       const screenX = mapRange(mathX,
                                INPUT_DOMAIN_START, INPUT_DOMAIN_END,
                                0, canvas.width - 1);
@@ -51,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* draw y numbers */
     for (let mathY = OUTPUT_DOMAIN_START; mathY <= OUTPUT_DOMAIN_END; ++mathY) {
+      if (mathY === 0) continue;
       const screenY = mapRange(-mathY,
                                OUTPUT_DOMAIN_START, OUTPUT_DOMAIN_END,
                                0, canvas.height - 1);
