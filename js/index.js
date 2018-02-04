@@ -3,8 +3,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   "use strict";
 
-  const CANVAS_WIDTH  = 400;
-  const CANVAS_HEIGHT = 300;
+  const CANVAS_WIDTH  = 512;
+  const CANVAS_HEIGHT = 512;
 
   const STEP = 0.01;
 
