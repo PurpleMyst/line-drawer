@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const CANVAS_WIDTH  = 300;
   const CANVAS_HEIGHT = 300;
 
+  const ARROW_SIZE = 5;
+
   const STEP = 0.01;
 
   const INPUT_DOMAIN_START  = -10;
@@ -32,10 +34,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     context.beginPath();
     context.strokeStyle = "#000";
+    context.fillStyle = "#000";
+
+    /* x axis */
     context.moveTo(0, canvas.height / 2);
     context.lineTo(canvas.width, canvas.height / 2);
+
+    /* x arrow */
+    context.lineTo(canvas.width - ARROW_SIZE, canvas.height / 2 - ARROW_SIZE);
+    context.moveTo(canvas.width, canvas.height / 2);
+    context.lineTo(canvas.width - ARROW_SIZE, canvas.height / 2 + ARROW_SIZE);
+
+    /* y axis */
     context.moveTo(canvas.width / 2, 0);
     context.lineTo(canvas.width / 2, canvas.height);
+
+    /* y arrow */
+    context.moveTo(canvas.width / 2, 0);
+    context.lineTo(canvas.width / 2 - ARROW_SIZE, ARROW_SIZE);
+    context.moveTo(canvas.width / 2, 0);
+    context.lineTo(canvas.width / 2 + ARROW_SIZE, ARROW_SIZE);
+
     context.stroke();
 
     const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
@@ -65,8 +84,11 @@ document.addEventListener("DOMContentLoaded", () => {
     context.putImageData(imageData, 0, 0);
     console.timeEnd("drawing");
 
-    context.fillStyle = "#00F";
     context.font = "bold 16px arial";
+    context.fillStyle = "#000";
+
+    context.fillText("y", canvas.width / 2 - 16, 16);
+    context.fillText("x", canvas.width - 16, canvas.height / 2 - 5);
 
     let message = "y = ";
 
@@ -90,6 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       message += constant;
     }
 
+    context.fillStyle = "#00F";
     context.fillText(message, 5, 16);
   };
 
