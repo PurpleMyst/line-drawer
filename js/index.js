@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     context.putImageData(imageData, 0, 0);
     console.timeEnd("drawing");
 
-    context.font = "bold 16px arial";
+    context.font = "bold 16px serif";
     context.fillStyle = "#000";
 
     context.fillText("y", canvas.width / 2 - 16, 16);
