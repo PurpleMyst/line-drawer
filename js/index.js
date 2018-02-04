@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const INPUT_DOMAIN_START  = -10;
   const INPUT_DOMAIN_END    = 10;
-  const OUTPUT_DOMAIN_START = -100;
-  const OUTPUT_DOMAIN_END   = 100;
+  const OUTPUT_DOMAIN_START = -10;
+  const OUTPUT_DOMAIN_END   = 10;
 
   const $inputs = document.getElementById("inputs");
   const $slope = document.getElementById("slope");
@@ -52,9 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const mathY = slope * mathX + constant;
 
-      const screenY = mapRange(mathY,
+      const screenY = mapRange(-mathY,
                                OUTPUT_DOMAIN_START, OUTPUT_DOMAIN_END,
-                               canvas.height, 0);
+                               0, canvas.height);
 
       const i = (Math.floor(screenY) * canvas.width + Math.floor(screenX)) * 4;
       pixels[i + 0] = 0;
