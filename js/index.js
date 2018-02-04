@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (constant !== 0) {
-      message += constant;
+      message += Math.abs(constant);
     } else if (slope === 0) {
       message += "0";
     }
