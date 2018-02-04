@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
     context.fillText(message, 5, 16);
   };
 
-  $slope.addEventListener("change", graph);
-  $constant.addEventListener("change", graph);
+  $slope.addEventListener("input", graph);
+  $constant.addEventListener("input", graph);
   graph();
 });
