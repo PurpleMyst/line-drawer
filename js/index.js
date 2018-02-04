@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const CANVAS_HEIGHT = 300;
 
   const ARROW_SIZE = 5;
+  const TICK_SIZE = 3;
 
   const STEP = 0.01;
 
@@ -43,7 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const screenX = mapRange(mathX,
                                INPUT_DOMAIN_START, INPUT_DOMAIN_END,
                                0, canvas.width - 1);
-      context.fillText("|", screenX, canvas.height / 2 + 2);
+      context.moveTo(screenX, canvas.height / 2 - TICK_SIZE);
+      context.lineTo(screenX, canvas.height / 2 + TICK_SIZE);
       context.fillText(mathX, screenX + 2, canvas.height / 2 - 8 + 16);
     }
 
@@ -52,8 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const screenY = mapRange(-mathY,
                                OUTPUT_DOMAIN_START, OUTPUT_DOMAIN_END,
                                0, canvas.height - 1);
-      context.fillText("--", canvas.width / 2 - 2.5, screenY);
-      context.fillText(mathY, canvas.width / 2 + 4, screenY);
+
+      context.moveTo(canvas.width / 2 - TICK_SIZE, screenY);
+      context.lineTo(canvas.width / 2 + TICK_SIZE, screenY);
+      context.fillText(mathY, canvas.width / 2 + 4, screenY + 2);
     }
     context.stroke();
 
