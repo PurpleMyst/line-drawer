@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
       message += "x";
 
       if (constant !== 0) {
-        message += " + ";
+        message += constant > 0 ? " + " : " - ";
       }
     }
 
