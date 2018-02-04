@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const STEP = 0.01;
 
-  const INPUT_DOMAIN_START  = -4;
-  const INPUT_DOMAIN_END    = 4;
+  const INPUT_DOMAIN_START  = -5;
+  const INPUT_DOMAIN_END    = 5;
   const OUTPUT_DOMAIN_START = -5;
   const OUTPUT_DOMAIN_END   = 5;
 
@@ -141,6 +141,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (constant !== 0) {
       message += constant;
+    } else if (slope === 0) {
+      message += "0";
     }
 
     context.fillStyle = "#00F";
