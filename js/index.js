@@ -84,11 +84,23 @@ document.addEventListener("DOMContentLoaded", () => {
     context.putImageData(imageData, 0, 0);
     console.timeEnd("drawing");
 
+    context.beginPath();
+    context.font = "bold 8px serif";
+    for (let mathX = OUTPUT_DOMAIN_START; mathX <= OUTPUT_DOMAIN_END; ++mathX) {
+      const screenX = mapRange(mathX,
+                               OUTPUT_DOMAIN_START, OUTPUT_DOMAIN_END,
+                               0, canvas.width - 1);
+      context.fillText("|", screenX, canvas.height / 2 + 2);
+      context.fillText(mathX, screenX + 2, canvas.height / 2 - 8 + 16);
+    }
+    context.stroke();
+
     context.font = "bold 16px serif";
     context.fillStyle = "#000";
 
     context.fillText("y", canvas.width / 2 - 16, 16);
     context.fillText("x", canvas.width - 16, canvas.height / 2 - 5);
+
 
     let message = "y = ";
 
